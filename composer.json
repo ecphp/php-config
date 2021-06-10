@@ -1,0 +1,32 @@
+{
+    "name": "ecphp/php-directive-bundle",
+    "type": "symfony-bundle",
+    "description": "Let users customize the PHP directives through a custom ini file.",
+    "keywords": [],
+    "homepage": "http://github.com/ecphp/php-directive-bundle",
+    "license": "MIT",
+    "require": {
+        "php": ">= 7.4",
+        "symfony/framework-bundle": "^5"
+    },
+    "require-dev": {
+        "ecphp/php-conventions": "^1",
+        "friends-of-phpspec/phpspec-code-coverage": "^6.1",
+        "infection/infection": "^0.23",
+        "infection/phpspec-adapter": "^0.1.1",
+        "phpspec/phpspec": "^7",
+        "psr/log": "^1.1",
+        "symfony/http-kernel": "^5.2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "EcPhp\\PhpDirectiveBundle\\": "src/"
+        }
+    },
+    "scripts": {
+        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
+        "grumphp": "./vendor/bin/grumphp run",
+        "phpspec": "./vendor/bin/phpspec run"
+    }
+}
