@@ -42,8 +42,11 @@ Then create a `php.user.ini` file in your project directory, containing some cus
 directives:
 
 ```ini
-max_memory=512M
-max_execution_time=60
+memory_limit=512M
+max_execution_time=120
+SMTP=smtp.example.com
+date.timezone="Europe/Brussels"
+xdebug.mode=debug
 ```
 
 ## Documentation
