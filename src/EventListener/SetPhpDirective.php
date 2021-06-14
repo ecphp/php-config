@@ -11,10 +11,12 @@ declare(strict_types=1);
 
 namespace EcPhp\PhpDirectiveBundle\EventListener;
 
+use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Throwable;
 
 use const DIRECTORY_SEPARATOR;
 
@@ -35,31 +37,36 @@ final class SetPhpDirective
 
     public function __invoke(RequestEvent $event): void
     {
-        $realIniFile = realpath(
-            $this->kernel->getProjectDir() .
-            DIRECTORY_SEPARATOR .
-            $this->parameterBag->get('php_directive')['user_ini_file']
-        );
+        $iniFile = $this->kernel->getProjectDir() .
+        DIRECTORY_SEPARATOR .
+        $this->parameterBag->get('php_directive')['user_ini_file'];
+
+        $realIniFile = realpath($iniFile);
 
         if (false === $realIniFile) {
-            $this->logger->error('Unable to find ini file.');
-
-            return;
+            throw new InvalidArgumentException('Unable to find ini file: ' . $iniFile);
         }
 
-        $parsedIniFile = parse_ini_file($realIniFile);
+        try {
+            $parsedIniFile = parse_ini_file($realIniFile);
+        } catch (Throwable $e) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Unable to parse ini file at %s.',
+                    $realIniFile
+                )
+            );
+        }
+
+        var_dump($parsedIniFile);
 
         if (false === $parsedIniFile) {
-            $this
-                ->logger
-                ->error(
-                    sprintf(
-                        'Unable to parse ini file at %s.',
-                        $realIniFile
-                    )
-                );
-
-            return;
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Unable to parse ini file at %s.',
+                    $realIniFile
+                )
+            );
         }
 
         foreach ($parsedIniFile as $key => $value) {
@@ -70,7 +77,7 @@ final class SetPhpDirective
                     ->logger
                     ->error(
                         sprintf(
-                            'Unable to update PHP property %s.',
+                            'Unable to update PHP property "%s", skipping.',
                             $key
                         )
                     );
