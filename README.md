@@ -11,13 +11,14 @@
 
 ## Description
 
-This bundle for Symfony 5 let uses alter and customize their PHP configuration.
+This bundle for Symfony 5 let users alter and customize their PHP configuration through
+directives.
 
-Usually the PHP configuration lives in a system wide `php.ini` file and regular users
-do not have the permissions to alter it.
+Usually the PHP configuration lives in a system wide `php.ini` file and most of the time
+regular users do not have the permissions to alter it.
 
 This bundle fix this by providing an easy way to alter the PHP configuration through
-a `.ini` file that can be committed in the project repository.
+a `.ini` file, file that can then be committed in the project repository.
 
 ## Installation
 
@@ -25,7 +26,7 @@ a `.ini` file that can be committed in the project repository.
 
 ## Usage
 
-Create a new Symfony configuration file as such:
+Create a new Symfony configuration file in `config/packages/php-config-bundle.yaml` as such:
 
 ```yaml
 php_config:
