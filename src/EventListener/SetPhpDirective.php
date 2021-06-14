@@ -58,8 +58,6 @@ final class SetPhpDirective
             );
         }
 
-        var_dump($parsedIniFile);
-
         if (false === $parsedIniFile) {
             throw new InvalidArgumentException(
                 sprintf(
