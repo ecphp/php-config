@@ -51,7 +51,28 @@ final class SetPhpDirectiveSpec extends ObjectBehavior
         ini_set('memory_limit', $memoryLimit);
     }
 
-    public function it_throws_an_exception_is_the_ini_file_is_not_found_or_readable(ParameterBagInterface $parameterBag, LoggerInterface $logger, KernelInterface $kernel, RequestEvent $event): void
+    public function it_throws_an_exception_if_the_ini_file_is_invalid(ParameterBagInterface $parameterBag, LoggerInterface $logger, KernelInterface $kernel, RequestEvent $event): void
+    {
+        $kernel
+            ->getProjectDir()
+            ->willReturn(dirname(__DIR__, 4) . '/fixtures');
+
+        $parameterBag
+            ->get('php_directive')
+            ->willReturn(
+                [
+                    'user_ini_file' => 'user-invalid.ini',
+                ]
+            );
+
+        $this->beConstructedWith($parameterBag, $logger, $kernel);
+
+        $this
+            ->shouldThrow(InvalidArgumentException::class)
+            ->during('__invoke', [$event]);
+    }
+
+    public function it_throws_an_exception_if_the_ini_file_is_not_found_or_readable(ParameterBagInterface $parameterBag, LoggerInterface $logger, KernelInterface $kernel, RequestEvent $event): void
     {
         $kernel
             ->getProjectDir()
@@ -72,31 +93,10 @@ final class SetPhpDirectiveSpec extends ObjectBehavior
             ->during('__invoke', [$event]);
     }
 
-    public function it_throws_an_exception_is_the_ini_file_is_not_parseable(): void
+    public function it_throws_an_exception_if_the_ini_file_is_not_parseable(): void
     {
         throw new SkippingException(
             'Unable to find a test where parse_ini_file() returns false.'
         );
-    }
-
-    public function it_throws_an_exception_is_the_ini_file_is_valid(ParameterBagInterface $parameterBag, LoggerInterface $logger, KernelInterface $kernel, RequestEvent $event): void
-    {
-        $kernel
-            ->getProjectDir()
-            ->willReturn(dirname(__DIR__, 4) . '/fixtures');
-
-        $parameterBag
-            ->get('php_directive')
-            ->willReturn(
-                [
-                    'user_ini_file' => 'user-invalid.ini',
-                ]
-            );
-
-        $this->beConstructedWith($parameterBag, $logger, $kernel);
-
-        $this
-            ->shouldThrow(InvalidArgumentException::class)
-            ->during('__invoke', [$event]);
     }
 }
