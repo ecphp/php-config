@@ -29,7 +29,7 @@ a `.ini` file, file that can then be committed in the project repository.
 Create a new Symfony configuration file in `config/packages/php-config-bundle.yaml` as such:
 
 ```yaml
-php_config:
+php_directive:
   user_ini_file: "%env(resolve:USER_INI_FILE)%"
 ```
 
