@@ -26,7 +26,7 @@ a `.ini` file, file that can then be committed in the project repository.
 
 ## Usage
 
-Create a new Symfony configuration file in `config/packages/php-config-bundle.yaml` as such:
+Create a new Symfony configuration file in `config/packages/php-directive-bundle.yaml` as such:
 
 ```yaml
 php_directive:
@@ -35,7 +35,7 @@ php_directive:
 
 Then add a new environment variable in the appropriate `.env` file of your choice:
 
-```
+```ini
 USER_INI_FILE=php.user.ini
 ```
 
