@@ -6,3 +6,4 @@ parameters:
   tasks.license.holder: ECPHP
   extra_tasks:
     phpspec: ~
+    behat: ~

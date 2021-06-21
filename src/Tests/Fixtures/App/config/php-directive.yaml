@@ -1,0 +1,2 @@
+php_directive:
+  user_ini_file: "./fixtures/user-memory-limit.ini"

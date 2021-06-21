@@ -10,13 +10,21 @@
         "symfony/framework-bundle": "^5"
     },
     "require-dev": {
+        "behat/behat": "^3.8",
+        "doctrine/annotations": "^1.13",
         "ecphp/php-conventions": "^1",
+        "friends-of-behat/mink": "^1.9",
+        "friends-of-behat/mink-browserkit-driver": "^1.5",
+        "friends-of-behat/mink-extension": "^2.5",
+        "friends-of-behat/symfony-extension": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^6.1",
         "infection/infection": "^0.23",
         "infection/phpspec-adapter": "^0.1.1",
         "phpspec/phpspec": "^7",
         "psr/log": "^1.1",
-        "symfony/http-kernel": "^5.2.4"
+        "soyuka/contexts": "^3.3",
+        "symfony/http-kernel": "^5.2.4",
+        "symfony/test-pack": "^1.0"
     },
     "autoload": {
         "psr-4": {
