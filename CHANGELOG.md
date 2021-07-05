@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0](https://github.com/ecphp/php-directive-bundle/compare/0.0.1...1.0.0)
+## [1.0.1](https://github.com/ecphp/php-directive-bundle/compare/1.0.0...1.0.1)
+
+### Commits
+
+- chore: Update .gitattributes. [`496f29a`](https://github.com/ecphp/php-directive-bundle/commit/496f29a7049e33eb9600f5414845f74c351a04e9)
+- chore: Update Docker stack. [`04d5cfc`](https://github.com/ecphp/php-directive-bundle/commit/04d5cfc91a152a2c19de2e866729f32027748f96)
+
+## [1.0.0](https://github.com/ecphp/php-directive-bundle/compare/0.0.1...1.0.0) - 2021-06-21
 
 ### Merged
 
@@ -13,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Commits
 
+- docs: Add/update CHANGELOG. [`b9ca1e7`](https://github.com/ecphp/php-directive-bundle/commit/b9ca1e747a4ddd2b1e7fb25bbcb6b40f2571a79d)
 - docs: Update README. [`5fd9739`](https://github.com/ecphp/php-directive-bundle/commit/5fd973952a8dde502db7bf8c1c4f8f84765f7679)
 - ci: Update integration tests workflow. [`0d6351c`](https://github.com/ecphp/php-directive-bundle/commit/0d6351c2f7b4ca7c1aac075cb8c2f490a957db30)
 - ci: Add integration tests. [`e386c2f`](https://github.com/ecphp/php-directive-bundle/commit/e386c2fed9dd05969468c89fb5aa42a88a8e9389)
