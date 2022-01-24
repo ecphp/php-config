@@ -1,10 +1,10 @@
 {
     "name": "ecphp/php-directive-bundle",
-    "type": "symfony-bundle",
     "description": "Let users customize the PHP directives through a custom ini file.",
+    "license": "BSD-3-Clause",
+    "type": "symfony-bundle",
     "keywords": [],
     "homepage": "http://github.com/ecphp/php-directive-bundle",
-    "license": "BSD-3-Clause",
     "require": {
         "php": ">= 7.4",
         "symfony/framework-bundle": "^5"
@@ -29,6 +29,15 @@
     "autoload": {
         "psr-4": {
             "EcPhp\\PhpDirectiveBundle\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true,
+            "infection/extension-installer": true,
+            "phpro/grumphp": true,
+            "phpstan/extension-installer": true
         }
     },
     "scripts": {
